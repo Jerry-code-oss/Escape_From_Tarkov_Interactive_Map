@@ -1,1 +1,35 @@
+# Escape From Tarkov Interactive Map Prototype
 
+这是一个简化的 C++ 逃离塔科夫海岸线互动地图原型。程序读取用户提供的配置文件，验证地图图片路径，并在终端中绘制包含玩家位置的海岸线示意图。
+
+## 功能概述
+- 生成 40x20 的海岸线 ASCII 地图（`~` 表示水域，`#` 表示陆地，`*` 为地标）。
+- 读取用户配置的图片路径与玩家坐标并进行校验。
+- 在终端渲染带有玩家位置 (`P`) 的地图。
+
+## 构建
+```bash
+mkdir -p build
+cd build
+cmake ..
+cmake --build .
+```
+
+生成的可执行文件名为 `map-prototype`。
+
+## 运行
+创建一个配置文件（例如 `config.txt`）并填入：
+```
+# 配置示例
+image_path=assets/shoreline_reference.jpg
+x=12
+y=6
+```
+> `image_path` 可以是相对或绝对路径，程序会验证文件是否存在并给出警告。
+
+然后在仓库根目录执行：
+```bash
+./build/map-prototype config.txt
+```
+
+若未提供配置文件，程序会打印使用说明。坐标从 `0` 开始，`x` 为列（横向），`y` 为行（纵向），最大范围由地图宽高决定（默认 40x20）。
