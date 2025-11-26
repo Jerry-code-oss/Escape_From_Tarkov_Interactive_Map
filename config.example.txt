@@ -1,4 +1,0 @@
-# 海岸线地图配置示例
-image_path=assets/shoreline_reference.jpg
-x=12
-y=6
